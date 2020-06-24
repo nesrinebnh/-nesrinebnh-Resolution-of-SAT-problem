@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.ComparisonController">
+   <children>
+      <MenuBar layoutY="-1.0" prefHeight="25.0" prefWidth="811.0" style="-fx-background-color: #ffffff;" stylesheets="@../application/application.css">
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#close" text="Close" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Algorithm">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#GAAction" text="GA" />
+                  <MenuItem mnemonicParsing="false" onAction="#PSOAction" text="PSO" />
+                  <MenuItem mnemonicParsing="false" onAction="#BSOAction" text="BSO" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Comparison">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="GA VS PSO VS BSO" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <GridPane layoutX="7.0" layoutY="24.0" prefHeight="569.0" prefWidth="345.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="89.0" minHeight="0.0" prefHeight="23.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="284.0" minHeight="10.0" prefHeight="134.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="214.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="250.0" minHeight="10.0" prefHeight="182.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="181.0" minHeight="10.0" prefHeight="21.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="156.0" minHeight="10.0" prefHeight="156.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="GA's parameters" textFill="#8b0046" underline="true">
+               <font>
+                  <Font name="Segoe Print" size="14.0" />
+               </font>
+            </Label>
+            <Label text="PSO's parameters" textFill="#8b0046" underline="true" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Segoe Print" size="14.0" />
+               </font>
+            </Label>
+            <Label text="BSO's parameters" textFill="#8b0046" underline="true" GridPane.rowIndex="4">
+               <font>
+                  <Font name="Segoe Print" size="14.0" />
+               </font>
+            </Label>
+            <GridPane prefHeight="142.0" prefWidth="254.0" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="219.0" minWidth="10.0" prefWidth="177.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="168.0" minWidth="10.0" prefWidth="168.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Max iter" textFill="#00468b">
+                     <font>
+                        <Font name="Rockwell" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="pop size" textFill="#00468b" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Rockwell" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Cr" textFill="#00468b" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Rockwell" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Mu" textFill="#00468b" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Rockwell" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="maxiterGA" style="-fx-background-color: #ffffff; -fx-border-color: #00468b;" GridPane.columnIndex="1" />
+                  <TextField fx:id="popsize" style="-fx-background-color: #ffffff; -fx-border-color: #00468b;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="cr" style="-fx-background-color: #ffffff; -fx-border-color: #00468b;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="mu" style="-fx-background-color: #ffffff; -fx-border-color: #00468b;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+               </children>
+            </GridPane>
+            <GridPane prefHeight="203.0" prefWidth="254.0" GridPane.rowIndex="3">
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="240.0" minWidth="10.0" prefWidth="180.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="10.0" prefWidth="165.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label text="Max iter" textFill="#00468b">
+                     <font>
+                        <Font name="Rockwell" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="number of partcles" textFill="#00468b" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Rockwell" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="C1" textFill="#00468b" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Rockwell" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="C2" textFill="#00468b" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Rockwell" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="maxiterPSO" style="-fx-background-color: #ffffff; -fx-border-color: #00468b;" GridPane.columnIndex="1" />
+                  <TextField fx:id="NumberOfParticles" style="-fx-background-color: #ffffff; -fx-border-color: #00468b;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="C1" style="-fx-background-color: #ffffff; -fx-border-color: #00468b;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="C2" style="-fx-background-color: #ffffff; -fx-border-color: #00468b;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="W" style="-fx-background-color: #ffffff; -fx-border-color: #00468b;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField fx:id="VMAX" style="-fx-background-color: #ffffff; -fx-border-color: #00468b;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Label text="W" textFill="#00468b" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="Rockwell" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="VMAX" textFill="#00468b" GridPane.rowIndex="5">
+                     <font>
+                        <Font name="Rockwell" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+            <GridPane prefHeight="203.0" prefWidth="254.0" GridPane.rowIndex="5">
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="240.0" minWidth="10.0" prefWidth="180.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="10.0" prefWidth="165.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label text="Max iter" textFill="#00468b">
+                     <font>
+                        <Font name="Rockwell" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="number of bees" textFill="#00468b" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Rockwell" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="flip" textFill="#00468b" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Rockwell" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="max chances" textFill="#00468b" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Rockwell" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="maxiterBSO" style="-fx-background-color: #ffffff; -fx-border-color: #00468b;" GridPane.columnIndex="1" />
+                  <TextField fx:id="bees" style="-fx-background-color: #ffffff; -fx-border-color: #00468b;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="flip" style="-fx-background-color: #ffffff; -fx-border-color: #00468b;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="chances" style="-fx-background-color: #ffffff; -fx-border-color: #00468b;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="search" style="-fx-background-color: #ffffff; -fx-border-color: #00468b;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label text="local search" textFill="#00468b" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="Rockwell" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+      <Label layoutX="569.0" layoutY="106.0" textFill="#00468b">
+         <font>
+            <Font name="Rockwell" size="14.0" />
+         </font>
+      </Label>
+      <GridPane layoutX="371.0" layoutY="32.0" prefHeight="549.0" prefWidth="415.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="262.0" minHeight="10.0" prefHeight="54.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="489.0" minHeight="10.0" prefHeight="360.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="489.0" minHeight="10.0" prefHeight="139.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextArea fx:id="warning" editable="false" prefHeight="97.0" prefWidth="312.0" style="-fx-border-color: #00468b; -fx-background-color: #ffffff;" stylesheets="@../application/application.css" text="WARNING&#10;This operation may take several minutes" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Rockwell" size="14.0" />
+               </font>
+            </TextArea>
+            <BarChart fx:id="bar" prefHeight="412.0" prefWidth="409.0" GridPane.rowIndex="1">
+              <xAxis>
+            		<CategoryAxis side="BOTTOM" fx:id="xAxis" />
+          	  	</xAxis>
+          		<yAxis>
+            		<NumberAxis fx:id="yAxis" layoutX="10.0" side="LEFT" />
+          		</yAxis>
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </BarChart>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="132.0" minWidth="10.0" prefWidth="39.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="250.0" minWidth="10.0" prefWidth="198.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="217.0" minWidth="10.0" prefWidth="165.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="go" mnemonicParsing="false" onAction="#extract" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #8b0046;" text="Search" textFill="WHITE" GridPane.columnIndex="2" />
+                  <Button fx:id="choose" mnemonicParsing="false" onAction="#choosingFile" prefHeight="25.0" prefWidth="141.0" style="-fx-background-color: #8b0046;" text="Choose your file" textFill="WHITE" GridPane.columnIndex="1" />
+                  <ImageView fitHeight="30.0" fitWidth="108.0" onMouseClicked="#dialog" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@info.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </GridPane>
+            <GridPane fx:id="comp" prefHeight="120.0" prefWidth="299.0" GridPane.rowIndex="2">
+              <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="62.0" minWidth="0.0" prefWidth="0.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="123.0" minWidth="10.0" prefWidth="123.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="102.0" minWidth="0.0" prefWidth="0.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="187.0" minWidth="10.0" prefWidth="133.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="189.0" minWidth="0.0" prefWidth="0.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="277.0" minWidth="10.0" prefWidth="132.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="277.0" minWidth="0.0" prefWidth="0.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints maxHeight="49.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="49.0" minHeight="0.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="44.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="48.0" minHeight="0.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="49.0" minHeight="0.0" prefHeight="0.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="47.0" minHeight="0.0" prefHeight="37.0" valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="45.0" minHeight="0.0" prefHeight="0.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="53.0" minHeight="10.0" prefHeight="39.0" valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="53.0" minHeight="0.0" prefHeight="0.0" valignment="CENTER" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="GA" textFill="#00468b" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Rockwell" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="PSO" textFill="#00468b" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <font>
+                        <Font name="Rockwell" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="BSO" textFill="#00468b" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                     <font>
+                        <Font name="Rockwell" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="16.0" prefWidth="35.0" text="Time" textFill="#00468b" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Rockwell" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Fitness" textFill="#00468b" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Rockwell" size="14.0" />
+                     </font>
+                  </Label>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+                  <Separator prefWidth="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Separator prefWidth="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Separator prefWidth="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.rowIndex="1" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.rowIndex="2" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.rowIndex="5" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.rowIndex="3" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.rowIndex="7" />
+                  <Separator prefWidth="96.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <Separator prefWidth="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Separator prefWidth="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                  <Separator prefWidth="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.rowIndex="1" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+                  <Separator prefWidth="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <Separator prefWidth="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                  <Separator prefWidth="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                  <Separator prefWidth="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+                  <Separator prefWidth="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+                  <Separator prefWidth="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                  <Separator prefWidth="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                  <Separator prefWidth="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                  <Separator prefWidth="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="1" />
+                  <Separator prefWidth="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="3" />
+                  <Separator prefWidth="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="5" />
+                  <Separator prefWidth="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <Separator prefWidth="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+                  <Separator prefWidth="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="5" GridPane.rowIndex="8" />
+                  <Separator prefWidth="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="2" />
+                  <Separator prefWidth="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="4" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-border-color: #8b0046; -fx-padding: 0; -fx-border-insets: 0;" stylesheets="@../application/application.css" GridPane.columnIndex="6" GridPane.rowIndex="7" />
+                  <Label fx:id="timeGA" text="Max iter" textFill="#00468b" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Rockwell" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="fitnessGA" text="Max iter" textFill="#00468b" GridPane.columnIndex="5" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Rockwell" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="timePSO" text="Max iter" textFill="#00468b" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                     <font>
+                        <Font name="Rockwell" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="fitnessPSO" text="Max iter" textFill="#00468b" GridPane.columnIndex="5" GridPane.rowIndex="5">
+                     <font>
+                        <Font name="Rockwell" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="fitnessBSO" text="Max iter" textFill="#00468b" GridPane.columnIndex="5" GridPane.rowIndex="7">
+                     <font>
+                        <Font name="Rockwell" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="timeBSO" text="Max iter" textFill="#00468b" GridPane.columnIndex="3" GridPane.rowIndex="7">
+                     <font>
+                        <Font name="Rockwell" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
